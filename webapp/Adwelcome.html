@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Administrator Page</title>
+<style>
+  body{
+      background:lightyellow;
+      color:green;
+      text-align:center;
+   }
+   input{
+       margin:10px;
+   }
+   table{
+          position:relative;
+          left:330px;
+    }
+    #logout{
+         position:relative;
+          left:500px;
+    }
+</style>
+</head>
+<body>
+<marquee direction=right behavior=alternate>
+<h1 style="text-align:center;"><b>welcome to administrator module</b></h1>
+</marquee>
+<table><tr><td>
+<form method=post action="viewcomplaints&suggetions.jsp">
+<input type="submit" value="GRIEVANCES"/>
+</form></td><td>
+<form method=post action="departmentsh.jsp">
+<input type="submit" value="DEPARTMENT"/>
+</form></td>
+<td><form method=post action="godownsh.jsp">
+<input type="submit" value="GODOWN"/>
+</form></td>
+<td><form method=post action="employesh.jsp">
+<input type="submit" value="EMPLOYEES"/>
+</form></td>
+<td><form method=post action="housesh.jsp">
+<input type="submit" value="HOUSES"/>
+</form></td>
+<td><form method=post action="selecthousesproblem.jsp">
+<input type="submit" value="FEEDBACK"/>
+</form></td><td>
+<form method=post action="adchangepassword1.jsp">
+<input type="submit" value="CHANGE PWD"/>
+</form></td></tr></table>
+<form method=post action="Home.html">
+<input id="logout"type="submit" value="LOGOUT"/>
+</form>
+
+</body>
+</html>
