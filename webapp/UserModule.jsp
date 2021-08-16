@@ -1,62 +1,35 @@
-
-
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="ISO-8859-1">
-<title>UserPage</title>
-<style>
-  input{
-  padding-left:10px;
-  margin:10px;
-  }
-  #logout
-  {
-       position:relative;
-       left:1000px;
-  }
-    
-</style>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="stylesheet"	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+<link type="text/css" href="bootstrap/css/bootstrap.min.css"
+	rel="stylesheet">
+<link type="text/css" href="images/icons/css/font-awesome.css"	rel="stylesheet">
+<link type="text/css" href="css/sidemenu.css"	rel="stylesheet">
 </head>
-	
-<body bgcolor=lightyellow text=blue>
-	<marquee direction=right behavior=alternate>
-			<h1 style="text-align:center;">
-				<b>Welcome to user module</b>
-			</h1>
-	</marquee>
-	<table align=center>
-		<tr>
-			<td>
-				<form method=post action="grievanceform.jsp">
-					<input type="submit" value="Grievance Form">
-				</form>
-			</td>
-			<td>
-				<form method=post action="GrievanceRecords.jsp">
-					<input type="submit" value="Grievance Record">
-				</form>
-			</td>
-			<td><form method=post action="SuggestionsFeedback.jsp">
-					<input type="submit" value="Feedback">
-				</form></td>			
-			<td><form method=post action="useracknowledgment.jsp">
-					<input type="submit" value="Acknowledgment">
-				</form></td>
-			<td><form method=post action="uchangepassword.jsp">
-					<input type="submit" value="Change Password">
-				</form>
-		</tr>
-
-	</table>
-	<form method=post action="LogOut.jsp">
-		<input id="logout" type="submit" value="LOGOUT">
-	</form>
+<body>
+	<h1 style="text-align: center; text-decoration:underline">USER MODULE</h1>
+	<div class="logout">
+         <a href="LogOut.jsp">LOGOUT</a>
+    </div>
+	<div class="sidenav">
+		<h2 style="color: white;">Actions</h2>
+		<br> <a href="grievanceform.jsp">Grievance Form</a><br /> <a
+			href="GrievanceRecords.jsp">Grievance Record</a><br /> <a
+			href="SuggestionsFeedback.jsp">Suggestion Feedback Form</a><br /> <a
+			href="UserAcknowledgement.jsp">Acknowledgments</a><br /> <a
+			href="UserChangePass.jsp">Change Password</a><br />
+	</div>
+	<div id="Uimage">
+		<img src="bootstrap/images/person.jpg">
+	</div>
 	<% 	
 		response.setHeader("Cache-Control","no-cache,no-store,must-revalidate");
 		if(session.getAttribute("userid")==null)
-			response.sendRedirect("index.jsp");
+			response.sendRedirect("Home.jsp");
         //response.setHeader("Cache-Control","no-cache,no-store,must-revalidate");
 	%>
 
+</body>
 </html>

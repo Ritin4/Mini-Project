@@ -1,56 +1,40 @@
 <!DOCTYPE html>
 <html>
-<head>
-<meta charset="ISO-8859-1">
-<title>Administrator Page</title>
-<style>
-  body{
-      background:lightyellow;
-      color:green;
-      text-align:center;
-   }
-   input{
-       margin:10px;
-   }
-   table{
-          position:relative;
-          left:330px;
-    }
-    #logout{
-         position:relative;
-          left:500px;
-    }
-</style>
-</head>
-<body>
-<marquee direction=right behavior=alternate>
-<h1 style="text-align:center;"><b>welcome to administrator module</b></h1>
-</marquee>
-<table><tr><td>
-<form method=post action="viewcomplaints&suggetions.jsp">
-<input type="submit" value="GRIEVANCES"/>
-</form></td><td>
-<form method=post action="departmentsh.jsp">
-<input type="submit" value="DEPARTMENT"/>
-</form></td>
-<td><form method=post action="godownsh.jsp">
-<input type="submit" value="GODOWN"/>
-</form></td>
-<td><form method=post action="employesh.jsp">
-<input type="submit" value="EMPLOYEES"/>
-</form></td>
-<td><form method=post action="housesh.jsp">
-<input type="submit" value="HOUSES"/>
-</form></td>
-<td><form method=post action="selecthousesproblem.jsp">
-<input type="submit" value="FEEDBACK"/>
-</form></td><td>
-<form method=post action="adchangepassword1.jsp">
-<input type="submit" value="CHANGE PWD"/>
-</form></td></tr></table>
-<form method=post action="Home.html">
-<input id="logout"type="submit" value="LOGOUT"/>
-</form>
-
-</body>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+    <link
+      type="text/css"
+      href="bootstrap/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      type="text/css"
+      href="images/icons/css/font-awesome.css"
+      rel="stylesheet"
+    />
+    <link type="text/css" href="css/sidemenu.css" rel="stylesheet" />
+  </head>
+  <body>
+    <h1 style="text-align: center; text-decoration: underline">Admin Module</h1>
+    <div class="logout">
+      <a href="LogOut.jsp">LOGOUT</a>
+    </div>
+    <div class="sidenav">
+      <h2 style="color: white">Actions</h2>
+      <br />
+      <a href="ViewSuggestionsFeedback_Admin.jsp">View Suggestions</a><br />
+      <a href="ManageDepartments.jsp">Departments</a><br />
+      <a href="ManageEmployees.jsp">Employees</a><br />
+      <a href="ViewAllHouses.jsp">Houses</a><br />
+      
+      <a href="ChangePassAdmin.jsp">Change Password</a><br />
+    </div>
+    <div id="Uimage">
+      <img src="images/Admin.jpg" />
+    </div>
+  </body>
 </html>

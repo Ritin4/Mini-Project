@@ -1,37 +1,44 @@
-<%@ page import ="java.sql.*"%>
-<%@ page import="java.util.*" %>
-<%@ page import="grev.Connect" %>
+<%@ page import="java.sql.*"%>
+<%@ page import="java.util.*"%>
+<%@ page import="grev.Connect"%>
 <%
-  //Fetching details from RegistrationPage.jsp
-   String user = request.getParameter("uname");
-   String pwd = request.getParameter("pass");
-   String fname=request.getParameter("fname");
-   String lname = request.getParameter("lname");
-   String email = request.getParameter("email");
-   String Hno = request.getParameter("hno");
-   
-   //Establishing Connection
-   /* String url = "jdbc:oracle:thin:@localhost:1521:XE";
-   String uname = "db";
-   String password=request.getParameter("password");
-   System.out.println(password); 
-   String password = "db"; 
-   Class.forName("oracle.jdbc.driver.OracleDriver");
-  */
-   Connection con = Connect.getCon();
-   out.println("Success");
-   
-   //Executing Query
-   Statement st = con.createStatement();   
-       
-   int i = st.executeUpdate("insert into Persons(FirstName,LastName,Email,Hno,Uname,Pass) values('" + fname + "','" + lname + "','" + email + "','" +Hno+"','"+ user + "','" + pwd + "')");
-   if (i>0)
-   { 
-	   response.sendRedirect("Welcome.jsp");
-    }
-    else
-    {
-          response.sendRedirect("index.jsp");	
-     }
- %>
- <!-- End -->
+int userid = 100;
+String user = request.getParameter("uname");
+String pwd = request.getParameter("pass");
+String fname = request.getParameter("fname");
+String lname = request.getParameter("lname");
+String email = request.getParameter("email");
+String Hno = request.getParameter("hno");
+String Sname = request.getParameter("sname");
+String zipcode = request.getParameter("zip");
+String Address = request.getParameter("address");
+double phn = Double.parseDouble(request.getParameter("mobile"));
+try {
+	Connection con = Connect.getCon();
+	Statement st = con.createStatement();
+	ResultSet rs = st.executeQuery("select nvl(max(ID),0)+1 from persons");
+	if (rs.next()) {
+		userid = rs.getInt(1);
+	}
+	ResultSet rs1 = st
+	.executeQuery("select * from persons where email='" + email + "'");
+	ResultSet rs2 = st
+	.executeQuery("select * from persons where hno='" + Hno + "'");
+
+	int i = st.executeUpdate(
+	"insert into Persons(ID,FirstName,LastName,Email,Hno,Sname,Address,phnno,Uname,Pass,zipcode) values('"
+			+ userid + "','" + fname + "','" + lname + "','" + email
+			+ "','" + Hno + "','" + Sname + "','" + Address + "','"
+			+ phn + "','" + user + "','" + pwd + "','" + zipcode
+			+ "')");
+	if (i > 0) {
+		response.sendRedirect("Welcome.jsp");
+	} else {
+
+		response.sendRedirect("RegistrationPage.jsp");
+	}
+
+} catch (Exception e) {
+	out.println(e);
+}
+%>

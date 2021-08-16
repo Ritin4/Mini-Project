@@ -1,73 +1,50 @@
 <!DOCTYPE html>
 <html>
-<head>
-<meta charset="ISO-8859-1">
-<title>Departments</title>
-<style>
-body {
-	background: lightyellow;
-	color: green;
-	text-align: center;
-}
-
-input {
-	margin: 10px;
-}
-
-table {
-    
-	float:center;
-}
-
-#logout {
-	position: relative;
-	left: 500px;
-}
-
-</style>
-</head>
-
-<body bgcolor=lightyellow text=green>
-	<%
-	String s5 = (String) session.getAttribute("dname");
-	out.println(
-			"<font color=blue size=10><marquee direction=right behavior=alternate>welcome to "
-			+ s5 + " department</marquee></font>");
-	%><br>
-	<br>
-	<table align=center>
-		<tr>
-			<td>
-				<form method=post action="viewgrievances.jsp">
-					<input type="submit" value="View Grievances">
-				</form>
-			</td>
-			<td>
-				<form method=post action="reportform.jsp">
-					<input type="submit" value="Report Form">
-				</form>
-			</td>
-			<td>
-				<form method=post action="dviewhouses.jsp">
-					<input type="submit" Value="View Houses">
-				</form>
-			</td>
-			<td><form method=post action="viewgodown.jsp">
-					<input type="submit" value="View Godown">
-				</form></td>
-			<td><form method=post action="depsugg&feedback.jsp">
-					<input type="submit" value="View Feedbacks">
-				</form></td>
-			<td><form method=post action="depack.jsp">
-					<input type="submit" value="Acknowledgment">
-				</form>	
-			<td><form method=post action="depchangepassword.html">
-					<input type="submit" value="Change Password">
-				</form></td>
-		</tr>
-	</table>
-	<form method=post action="Home.html">
-		<input id="logout" type="submit" value="Log out">
-	</form>
-</body>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+    <link
+      type="text/css"
+      href="bootstrap/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      type="text/css"
+      href="images/icons/css/font-awesome.css"
+      rel="stylesheet"
+    />
+    <link type="text/css" href="css/sidemenu.css" rel="stylesheet" />
+  </head>
+  <body>
+  <%
+	String s5 = (String) session.getAttribute("dname");	
+	%>
+	<h1 style="text-align: center; text-decoration:underline"><% out.print("Welcome To "+ s5 + " Department"); %></h1>
+    <br />
+    <br />
+    <div class="logout">
+      <a href="LogOut.jsp">LOGOUT</a>
+    </div>
+    <div class="sidenav">
+      <h2 style="color: white">Actions</h2>
+      <br />
+      <a href="ViewComplaints.jsp">View Complaints</a><br />
+      <a href="EmployeAction.jsp">Update the status</a><br />
+      <a href="ViewHouses.jsp">View Houses</a><br/>
+      <a href="ViewUserSugg&Feedbacks.jsp">View Feedbacks</a><br />
+      <a href="SendAcknowledgment.jsp">Send Acknowledgment</a><br />
+    </div>
+    <div id="Uimage">
+      <img src="bootstrap/images/department.png" />
+    </div>
+    <% 	
+		response.setHeader("Cache-Control","no-cache,no-store,must-revalidate");
+		if(session.getAttribute("dname")==null)
+			response.sendRedirect("Home.jsp");
+        //response.setHeader("Cache-Control","no-cache,no-store,must-revalidate");
+	%>
+  </body>
 </html>

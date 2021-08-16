@@ -8,16 +8,14 @@
 </head>
 <body>
 <%
-//HttpSession ses = request.getSession();
-//out.print(session.getAttribute("hno"));
-out.print( session.getId());
-session.removeAttribute("userid");
-session.removeAttribute("password");
-session.removeAttribute("hno");
+session.setAttribute("userid", null);
+session.setAttribute("password",null);
+session.setAttribute("hno", null);
+session.setAttribute("s1", null);
+session.setAttribute("dname", null);
+session.setAttribute("id",null);
 session.invalidate();
-//out.print(session.getAttribute("hno"));
-//out.print("Invalidated");
-response.sendRedirect("Home.html");
+response.sendRedirect("Home.jsp");
 %>
 </body>
 </html>

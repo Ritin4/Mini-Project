@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <%@ page import="java.sql.*"%>
+<%@ page import ="grev.Connect" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -15,11 +16,7 @@
 	String doc = request.getParameter("doc");
 
 	try {
-		Class.forName("oracle.jdbc.driver.OracleDriver");//2(b) System.out.println("Driver loaded"); 
-		String url = "jdbc:oracle:thin:@localhost:1521:XE";
-		String uname = "wethree";
-		String password = "proj";
-		Connection con = DriverManager.getConnection(url, uname, password);
+		Connection con=Connect.getCon();
 		Statement st = con.createStatement();
 		String date = "";
 		int no = st.executeUpdate("update grievance set status='" + status+ "', doc='" + doc + "' where gid=" + gid);

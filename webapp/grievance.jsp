@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <%@ page import="java.sql.*"%>
+<%@ page import="grev.Connect" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -14,15 +15,10 @@
 	String prob = request.getParameter("prob");
 	String category = request.getParameter("catg");	
 	try {
-		Class.forName("oracle.jdbc.driver.OracleDriver");//2(b) System.out.println("Driver loaded"); 
-		String url = "jdbc:oracle:thin:@localhost:1521:XE";
-		String uname = "db";
-		String password = "db";
-		Connection con = DriverManager.getConnection(url, uname, password);
+		Connection con = Connect.getCon();
 		Statement st = con.createStatement();
 		String date = "";
-		ResultSet rs = st
-		.executeQuery("select to_char(Sysdate,'dd-mon-yy')from dual");
+		ResultSet rs = st.executeQuery("select to_char(Sysdate,'dd-mon-yy')from dual");
 		if (rs.next()) {
 			date = rs.getString(1);
 		}
@@ -37,6 +33,7 @@
 				+ gid + ",'" + hno + "','" + dname + "','" + date + "','"
 				+ prob + "','" + category + "')");
 		//response.setHeader("Cache-Control","no-store,no-store,must-revalidate");
+		    session.setAttribute("gid", gid);
 			response.sendRedirect("Success.html");
 			
 	} catch (Exception e) {
